@@ -2,6 +2,8 @@ package com.bsren.qiu.collections;
 
 import java.io.Serializable;
 import java.util.AbstractQueue;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +13,21 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements BlockingDeque<E>, Serializable {
 
 	private static final long serialVersionUID = -387911632671998426L;
+
+	@Override
+	public boolean offer(E e) {
+		return false;
+	}
+
+	@Override
+	public E poll() {
+		return null;
+	}
+
+	@Override
+	public E peek() {
+		return null;
+	}
 
 	static final class Node<E> {
 		E item;
@@ -40,6 +57,31 @@ public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements Blocking
 
 	public LinkedBlockingDeque() {
 		this(Integer.MAX_VALUE);
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		return null;
+	}
+
+	@Override
+	public Iterator<E> descendingIterator() {
+		return null;
+	}
+
+	@Override
+	public void push(E e) {
+
+	}
+
+	@Override
+	public E pop() {
+		return null;
+	}
+
+	@Override
+	public int size() {
+		return 0;
 	}
 
 	public LinkedBlockingDeque(int capacity) {
@@ -81,7 +123,7 @@ public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements Blocking
 		return true;
 	}
 
-	@GuardBy("this")
+
 	private E unlinkFirst() {
 		Node<E> f = first;
 		if (f == null) {
@@ -411,6 +453,46 @@ public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements Blocking
 		}finally {
 			lock.unlock();
 		}
+	}
+
+	@Override
+	public boolean removeLastOccurrence(Object o) {
+		return false;
+	}
+
+	@Override
+	public void put(E e) throws InterruptedException {
+
+	}
+
+	@Override
+	public boolean offer(E e, long timeout, TimeUnit unit) throws InterruptedException {
+		return false;
+	}
+
+	@Override
+	public E take() throws InterruptedException {
+		return null;
+	}
+
+	@Override
+	public E poll(long timeout, TimeUnit unit) throws InterruptedException {
+		return null;
+	}
+
+	@Override
+	public int remainingCapacity() {
+		return 0;
+	}
+
+	@Override
+	public int drainTo(Collection<? super E> c) {
+		return 0;
+	}
+
+	@Override
+	public int drainTo(Collection<? super E> c, int maxElements) {
+		return 0;
 	}
 
 

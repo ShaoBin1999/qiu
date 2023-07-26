@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.locks.LockSupport;
 
-import static sun.misc.InnocuousThread.UNSAFE;
 
 public class LinkedTransferQueue<E> extends AbstractQueue<E> implements TransferQueue<E> , Serializable {
 
